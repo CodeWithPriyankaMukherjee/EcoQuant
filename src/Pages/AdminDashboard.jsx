@@ -56,7 +56,7 @@ const handleApprove = async () => {
   
 
  // 3) Mint BVT tokens with IPFS CID stored on-chain
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://ecoquant.onrender.com/';
 const mintResponse = await fetch(`${API_BASE_URL}/api/mint`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
