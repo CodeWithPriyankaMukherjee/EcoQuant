@@ -4,6 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { useNavigate } from 'react-router-dom';
 import CompactMetaMaskButton from './CompactMetaMaskButton';
 import TokenDashboard from './TokenDashboard'; // MADARCHOD
+//import videoSrc from '../assets/video.mp4'; // Adjust path based on your folder structure
 // Mock data for ERC20 tokens
 const mockTokens = [
   { name: 'BlueVault Token (BVT)', issued: 1000000, retired: 150000, total: 850000, price: 1.25, change: 2.5, color: '#3B82F6' },
@@ -241,7 +242,7 @@ const InvestorDashboard = () => {
         muted
         loop
         className="absolute inset-0 w-full h-full object-cover z-0"
-        src="/video.mp4"
+        src="/video.mp4" type="video/mp4"
       />
       {/* Overlay for better readability */}
       <div className="absolute inset-0 bg-black/50 z-10"></div>
