@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { usePrivy } from '@privy-io/react-auth';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import { useNavigate } from 'react-router-dom';
 import CompactMetaMaskButton from './CompactMetaMaskButton';
 import TokenDashboard from './TokenDashboard'; // MADARCHOD
 // Mock data for ERC20 tokens
@@ -19,14 +20,6 @@ const chartData = [
   { time: '12:00', value: 108 },
   { time: '16:00', value: 115 },
   { time: '20:00', value: 112 },
-];
-
-const marketData = [
-  { rank: 1, name: 'Bitcoin BTC', price: 102848.00, change24h: 2.41, change7d: -2.51, marketCap: '2,059,152,416,380', volume: '49,388,211,984', chart: 'up' },
-  { rank: 2, name: 'Ethereum ETH', price: 3825.42, change24h: 1.32, change7d: 1.78, marketCap: '423,160,947,333', volume: '21,984,318,416', chart: 'up' },
-  { rank: 3, name: 'Solana SOL', price: 147.5, change24h: 3.44, change7d: -7.86, marketCap: '82,398,574,112', volume: '5,628,571,232', chart: 'down' },
-  { rank: 4, name: 'Dogecoin DOGE', price: 0.168, change24h: 1.79, change7d: 1.92, marketCap: '22,415,117,448', volume: '2,010,432,256', chart: 'up' },
-  { rank: 5, name: 'Sui SUI', price: 1.29, change24h: -1.53, change7d: -2.27, marketCap: '1,872,391,834', volume: '503,062,112', chart: 'down' },
 ];
 
 
@@ -119,13 +112,13 @@ const UbeswapPoolData = () => {
 
   if (loading) {
     return (
-      <div className="bg-gray-800 p-6 rounded-xl shadow-lg">
+      <div className="bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-lg border border-white/20">
         <h3 className="text-xl font-bold mb-4">Ubeswap Pool</h3>
         <div className="animate-pulse">
-          <div className="h-4 bg-gray-700 rounded mb-2"></div>
-          <div className="h-4 bg-gray-700 rounded mb-2"></div>
-          <div className="h-4 bg-gray-700 rounded mb-4"></div>
-          <div className="h-20 bg-gray-700 rounded"></div>
+          <div className="h-4 bg-white/20 rounded mb-2"></div>
+          <div className="h-4 bg-white/20 rounded mb-2"></div>
+          <div className="h-4 bg-white/20 rounded mb-4"></div>
+          <div className="h-20 bg-white/20 rounded"></div>
         </div>
       </div>
     );
@@ -133,7 +126,7 @@ const UbeswapPoolData = () => {
 
   if (error && !poolData) {
     return (
-      <div className="bg-gray-800 p-6 rounded-xl shadow-lg">
+      <div className="bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-lg border border-white/20">
         <h3 className="text-xl font-bold mb-4">Ubeswap Pool</h3>
         <div className="text-red-400 text-center py-4">
           {error}
@@ -143,7 +136,7 @@ const UbeswapPoolData = () => {
   }
 
   return (
-    <div className="bg-gray-800 p-6 rounded-xl shadow-lg">
+    <div className="bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-lg border border-white/20">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-xl font-bold">Ubeswap Pool</h3>
         <button 
@@ -238,36 +231,50 @@ const UbeswapPoolData = () => {
 
 const InvestorDashboard = () => {
   const { login, authenticated } = usePrivy();
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/video.mp4"
+      />
+      {/* Overlay for better readability */}
+      <div className="absolute inset-0 bg-black/50 z-10"></div>
       {/* Sidebar */}
-      <div className="fixed inset-y-0 left-0 w-64 bg-gray-800 shadow-lg">
-        <div className="flex items-center justify-center h-16 bg-gray-700">
+      <div className="fixed inset-y-0 left-0 w-64 bg-gray-800/70 backdrop-blur-lg shadow-lg z-20">
+        <div className="flex items-center justify-center h-16 bg-white/10 backdrop-blur-lg border-b border-white/20">
           <h1 className="text-xl font-bold text-green-400">EcoQuant</h1>
         </div>
         <nav className="mt-8">
           <ul className="space-y-2">
-            <li className="px-6 py-3 bg-gray-700 cursor-pointer hover:bg-gray-600 transition-colors">🏠 Dashboard</li>
-            <li className="px-6 py-3 hover:bg-gray-700 cursor-pointer transition-colors">
-              <a href="/trading" className="block">📊 Trading</a>
+            <li className="px-6 py-3 bg-gray-700 cursor-pointer hover:bg-gray-600 transition-colors flex justify-center">
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+              </svg>
             </li>
-            <li className="px-6 py-3 hover:bg-gray-700 cursor-pointer transition-colors">💼 Portfolio</li>
-            <li className="px-6 py-3 hover:bg-gray-700 cursor-pointer transition-colors">🔄 Transactions</li>
-            <li className="px-6 py-3 hover:bg-gray-700 cursor-pointer transition-colors">⚙️ Settings</li>
+            <li className="px-6 py-3 hover:bg-gray-700 cursor-pointer transition-colors flex justify-center" onClick={() => navigate('/')}>
+              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+              </svg>
+            </li>
           </ul>
         </nav>
       </div>
 
       {/* Main Content */}
-      <div className="ml-64 p-8">
+      <div className="ml-64 p-8 relative z-30">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div className="flex-1 max-w-md">
             <input
               type="text"
               placeholder="Search..."
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
+              className="w-full px-4 py-2 bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-white"
             />
           </div>
           <div className="flex items-center space-x-4">
@@ -309,7 +316,7 @@ const InvestorDashboard = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {mockTokens.map((token, index) => (
-              <div key={index} className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div key={index} className="bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-white/20">
                 <div className="flex items-center mb-4">
                   <div className="w-10 h-10 rounded-full" style={{ backgroundColor: token.color }}></div>
                   <div className="ml-3">
@@ -352,40 +359,8 @@ const InvestorDashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
           {/* Market Overview */}
           <div className="lg:col-span-2">
-            <div className="bg-gray-800 p-6 rounded-xl shadow-lg">
-              <h2 className="text-2xl font-bold mb-4">Market Overview</h2>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-gray-700">
-                      <th className="text-left py-3 text-gray-400">#</th>
-                      <th className="text-left py-3 text-gray-400">Name</th>
-                      <th className="text-right py-3 text-gray-400">Price</th>
-                      <th className="text-right py-3 text-gray-400">24h %</th>
-                      <th className="text-right py-3 text-gray-400">7d %</th>
-                      <th className="text-right py-3 text-gray-400">Market Cap</th>
-                      <th className="text-right py-3 text-gray-400">Volume (24h)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {marketData.map((item) => (
-                      <tr key={item.rank} className="border-b border-gray-700 hover:bg-gray-700 transition-colors">
-                        <td className="py-4 text-gray-400">{item.rank}</td>
-                        <td className="py-4 font-medium">{item.name}</td>
-                        <td className="py-4 text-right">${item.price.toLocaleString()}</td>
-                        <td className={`py-4 text-right ${item.change24h > 0 ? 'text-green-400' : 'text-red-400'}`}>
-                          {item.change24h > 0 ? '+' : ''}{item.change24h}%
-                        </td>
-                        <td className={`py-4 text-right ${item.change7d > 0 ? 'text-green-400' : 'text-red-400'}`}>
-                          {item.change7d > 0 ? '+' : ''}{item.change7d}%
-                        </td>
-                        <td className="py-4 text-right">${item.marketCap}</td>
-                        <td className="py-4 text-right">${item.volume}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            <div className="bg-white/10 backdrop-blur-lg p-6 rounded-xl shadow-lg border border-white/20">
+              <TokenDashboard />
             </div>
           </div>
           
@@ -393,11 +368,6 @@ const InvestorDashboard = () => {
           <UbeswapPoolData />
         </div>
 
-        {/* Token Dashboard as full-width section */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">EQT Token Analytics</h2>
-          <TokenDashboard />
-        </div>
       </div>
     </div>
   );
