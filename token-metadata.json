@@ -1,0 +1,13 @@
+{
+    "name": "BlueVault Token",
+    "symbol": "BVT",
+    "decimals": 18,
+    "description": "BlueVault ecosystem utility token with minting records",
+    "website": "https://your-website.com",
+    "logo": {
+        "src": "ipfs://bafkreibcp44vj43g4x2s2vitngghfbhtqhc2x3bkn4tt7kgxk6yvm4bfte",
+        "width": 256,
+        "height": 256,
+        "ipfs_hash": "bafkreibcp44vj43g4x2s2vitngghfbhtqhc2x3bkn4tt7kgxk6yvm4bfte"
+    }
+}
