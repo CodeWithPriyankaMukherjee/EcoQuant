@@ -10,12 +10,12 @@ https://celo-sepolia.blockscout.com/token/0xe00b540dfb16dbe12b80ef89f3172ffe3305
 ![IPFS](https://img.shields.io/badge/IPFS-Storage-orange)
 
 ## 🚀 Overview
-### EcoQuant (EQT) is a decentralized financial ecosystem built on the Celo Sepolia Testnet, designed to enable transparent and traceable carbon credit verification, tokenization, and investment.
+#### EcoQuant (EQT) is a decentralized financial ecosystem built on the Celo Sepolia Testnet, designed to enable transparent and traceable carbon credit verification, tokenization, and investment.
 
 #### We introduce EcoQuant Tokens (EQT) — an ERC-20 fungible token that represents verified carbon offsets. Our system bridges the gap between contributors (project developers who generate carbon offsets) and investors (individuals or institutions who wish to support sustainable initiatives or trade in carbon markets), creating a climate-positive financial loop.
 
 ## 🌍 Why It Matters
-### The world’s carbon markets suffer from opacity, double counting, and lack of verification, making it difficult for sustainable projects to receive fair valuation and funding.
+#### The world’s carbon markets suffer from opacity, double counting, and lack of verification, making it difficult for sustainable projects to receive fair valuation and funding.
 
 EcoQuant tackles this challenge by:
 
@@ -26,6 +26,41 @@ Ensuring full transparency of transactions and project authenticity.
 Creating incentives for green investment through a decentralized liquidity ecosystem.
 
 By turning carbon offsets into verifiable, tradable tokens, we’re transforming climate accountability into a tangible financial incentive, empowering individuals and organizations to take part in the global mission toward Net Zero.
+
+## ⚙️ System Architecture
+#### 1. Contributor Dashboard
+
+- Contributors upload and submit their carbon offset projects.
+
+- They draw polygon shapes on a geo-mapped interface to mark the project location.
+
+- The system uses ML-based prediction to suggest the amount of EQT tokens to be minted for each project.
+
+2. Admin Verification & Minting
+
+- Admin reviews submissions and approves verified projects.
+
+- EQT tokens are minted based on project type and ML predictions.
+
+- Each project’s metadata and proof are stored on IPFS for immutable verification.
+
+3. Blockchain Integration
+
+- Minted EQTs are recorded on the Celo Sepolia chain.
+
+- All transactions are publicly viewable for full transparency.
+
+4. Investor Dashboard
+
+- Investors can invest in specific projects, or Trade EQT tokens via the liquidity pool.
+
+- Using the Ubeswap V3 protocol, investors can swap Celo tokens for EQT and add liquidity to the pool — supporting the ecosystem and earning returns.
+
+5. Transparency Layer
+
+- Every transaction, investment, and token activity is visible on the investor dashboard.
+
+- Ensures trust, traceability, and climate accountability.
 ## Quick Start
 
 ### Prerequisites
