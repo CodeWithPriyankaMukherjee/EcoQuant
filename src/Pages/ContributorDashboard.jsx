@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Polygon, useMapEvents } from 'react-leaflet'
 import L from 'leaflet'
 import { useSubmissionStore } from '../store/submissions'
@@ -124,8 +124,8 @@ files: files.map(f => ({ name: f.name, size: f.size })),
       {/* Sidebar */};
       <aside className="w-64 bg-slate-900 text-white flex flex-col p-6">
         <div className="flex items-center gap-2 text-lg font-semibold">
-          <img src="/logo.png" alt="BlueVault" className="w-6 h-6" />
-          BlueVault
+          <img src="/logo.png" alt="EcoQuant" className="w-6 h-6" />
+          EcoQuant
         </div>
         <nav className="flex-1 mt-6 space-y-1">
           <span className="block px-3 py-2 rounded bg-slate-800/60">Contributor Dashboard</span>
@@ -149,7 +149,7 @@ files: files.map(f => ({ name: f.name, size: f.size })),
           <div className="text-xs sm:text-sm px-3 py-1 rounded-full bg-white shadow border border-slate-200">Wallet: {wallet}</div>
           <button
             onClick={onConnect}
-            className="rounded bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 text-sm shadow hover:from-blue-500 hover:to-indigo-500"
+            className="rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 text-sm shadow hover:from-blue-500 hover:to-indigo-500"
           >
             {wallet === 'Not connected' ? 'Connect MetaMask' : 'Reconnect Wallet'}
           </button>
@@ -196,148 +196,84 @@ files: files.map(f => ({ name: f.name, size: f.size })),
               </div>
             </div>
 
-            <h3 className="text-lg font-medium text-slate-900 mt-6 mb-2">Project Location</h3>
-            <div className="flex items-center gap-2 mb-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setDrawArea((v) => {
-                    const nv = !v
-                    if (!nv && areaPoints.length >= 3) {
-                      setAreaGeoJson(areaPoints)
-                    }
-                    return nv
-                  })
-                }}
-                className={`rounded px-3 py-1 text-sm border ${drawArea ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-slate-800 border-slate-300 hover:bg-slate-50'}`}
-              >
-                {drawArea ? 'Finish Drawing' : 'Draw Area'}
-              </button>
-              <button
-                type="button"
-                onClick={() => { setAreaPoints([]); setAreaGeoJson(null) }}
-                className="rounded px-3 py-1 text-sm border bg-white text-slate-800 border-slate-300 hover:bg-slate-50"
-              >
-                Clear Area
-              </button>
-              <span className="text-xs text-slate-500">Tip: While drawing, click on map to add vertices. Finish Drawing to save.</span>
-            </div>
-            <div className="rounded-xl overflow-hidden border border-slate-200 h-72">
-              <MapContainer center={indiaCenter} zoom={5} style={{ height: '100%', width: '100%' }}>
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap" />
-                <ClickToAddMarker onMapClick={(lat, lng) => {
-                  if (drawArea) {
-                    const next = [...areaPoints, [lat, lng]]
-                    setAreaPoints(next)
-                    // when toggled off (Finish Drawing) we persist GeoJSON below
-                  } else {
-                    setPosition([lat, lng])
-                    setForm({ ...form, latitude: String(lat), longitude: String(lng) })
-                  }
-                }} />
-                {position && <Marker position={position} icon={markerIcon} />}
-                {areaPoints.length >= 3 && (
-                  <Polygon positions={areaPoints} pathOptions={{ color: '#2563eb', fillOpacity: 0.15 }} />
-                )}
-              </MapContainer>
-            </div>
-            {drawArea === false && areaPoints.length >= 3 && (
-              <div className="mt-2 text-xs text-slate-600">
-                Selected area with {areaPoints.length} points.
-              </div>
-            )}
-            {drawArea === true && areaPoints.length > 0 && (
-              <div className="mt-2 text-xs text-slate-600">Points: {areaPoints.length} (click Finish Drawing to save)</div>
-            )}
 
             <h3 className="text-lg font-medium text-slate-900 mt-6 mb-2">Evidence Files</h3>
             <div className="space-y-2">
-              <input type="file" multiple onChange={(e) => setFiles(Array.from(e.target.files || []))} />
+              <label className="block cursor-pointer">
+                <div className="flex items-center justify-center w-full h-12 px-4 py-2 border-2 border-dashed border-slate-300 rounded-lg bg-slate-50 hover:bg-slate-100 hover:border-slate-400 transition-colors">
+                  <span className="text-sm text-slate-600">Select multiple files</span>
+                </div>
+                <input type="file" multiple onChange={(e) => setFiles(Array.from(e.target.files || []))} className="hidden" />
+              </label>
               <div className="text-xs text-slate-500">Or pick a folder of images:</div>
-              <input type="file" multiple webkitdirectory="" directory="" onChange={(e) => setFiles(Array.from(e.target.files || []))} />
+              <label className="block cursor-pointer">
+                <div className="flex items-center justify-center w-full h-12 px-4 py-2 border-2 border-dashed border-slate-300 rounded-lg bg-slate-50 hover:bg-slate-100 hover:border-slate-400 transition-colors">
+                  <span className="text-sm text-slate-600">Select folder</span>
+                </div>
+                <input type="file" multiple webkitdirectory="" directory="" onChange={(e) => setFiles(Array.from(e.target.files || []))} className="hidden" />
+              </label>
             </div>
-            <div className="mt-4">
+            <div className="mt-4 flex justify-center">
               <button
                 onClick={onSubmit}
                 disabled={submitting}
-                className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2 shadow hover:from-blue-500 hover:to-indigo-500 disabled:opacity-60"
+                className="rounded-full bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 text-lg shadow hover:from-green-500 hover:to-emerald-500 disabled:opacity-60"
               >
                 Submit
               </button>
             </div>
-          </div>
 
-          {/* Right: Stats + Decisions */}
-          <div className="space-y-6">
-            <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-5">
-              <h3 className="text-lg font-semibold text-slate-900 mb-4">My Project Registry</h3>
-              <div className="grid grid-cols-3 gap-3">
-                <div className="rounded-lg bg-blue-50 text-blue-900 p-3 text-center">
-                  <div className="text-2xl font-bold">{pending.length}</div>
-                  <div className="text-xs">Pending</div>
-                </div>
-                <div className="rounded-lg bg-emerald-50 text-emerald-900 p-3 text-center">
-                  <div className="text-2xl font-bold">{approvals.length}</div>
-                  <div className="text-xs">Approved</div>
-                </div>
-                <div className="rounded-lg bg-amber-50 text-amber-900 p-3 text-center">
-                  <div className="text-2xl font-bold">{feedback.length}</div>
-                  <div className="text-xs">Needs Data</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-5">
+            {/* Recent Decisions */}
+            <div className="mt-6 bg-white border border-slate-200 rounded-xl shadow-sm p-5">
               <h3 className="text-lg font-semibold text-slate-900 mb-4">Recent Decisions</h3>
               {(approvals.length === 0 && feedback.length === 0) && (
                 <div className="text-slate-500 text-sm">No submissions yet.</div>
               )}
-              <div className="space-y-3">
-  {approvals.map((s) => (
-    <div key={s.id} className="flex flex-col rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2">
-      <div className="flex items-center justify-between mb-2">
-        <div className="text-sm">Project {s.projectId}</div>
-        <span className="text-xs font-medium text-emerald-800">Approved</span>
-      </div>
-      
-      {s.ipfsCid && (
-        <div className="text-xs text-slate-600 mt-1">
-          <span className="font-medium">IPFS: </span>
-          <a 
-            href={`https://gateway.pinata.cloud/ipfs/${s.ipfsCid}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:underline break-all"
-            title="View on IPFS"
-          >
-            {s.ipfsCid}
-          </a>
-        </div>
-      )}
-      {s.txHash && (
-        <div className="text-xs text-slate-600 mt-1">
-          <span className="font-medium">Transaction: </span>
-          <a 
-            href={`https://celo-sepolia.blockscout.com/tx/${s.txHash}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:underline break-all"
-            title="View on Polygonscan"
-          >
-            {s.txHash}
-          </a>
-        </div>
-      )}
-      {s.tokensAwarded && (
-        <div className="text-xs text-slate-600 mt-1">
-          <span className="font-medium">Tokens: </span>
-          {s.tokensAwarded}
-        </div>
-      )}
-    </div>
-  ))}
-
-              
+              <div className="space-y-3 overflow-y-auto max-h-96">
+                {approvals.map((s) => (
+                  <div key={s.id} className="flex flex-col rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="text-sm">Project {s.projectId}</div>
+                      <span className="text-xs font-medium text-emerald-800">Approved</span>
+                    </div>
+                    
+                    {s.ipfsCid && (
+                      <div className="text-xs text-slate-600 mt-1">
+                        <span className="font-medium">IPFS: </span>
+                        <a
+                          href={`https://gateway.pinata.cloud/ipfs/${s.ipfsCid}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 hover:underline break-all"
+                          title="View on IPFS"
+                        >
+                          {s.ipfsCid}
+                        </a>
+                      </div>
+                    )}
+                    {s.txHash && (
+                      <div className="text-xs text-slate-600 mt-1">
+                        <span className="font-medium">Transaction: </span>
+                        <a
+                          href={`https://celo-sepolia.blockscout.com/tx/${s.txHash}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 hover:underline break-all"
+                          title="View on Polygonscan"
+                        >
+                          {s.txHash}
+                        </a>
+                      </div>
+                    )}
+                    {s.tokensAwarded && (
+                      <div className="text-xs text-slate-600 mt-1">
+                        <span className="font-medium">Tokens: </span>
+                        {s.tokensAwarded}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                
                 {feedback.map((s) => (
                   <div key={s.id} className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2">
                     <div className="flex items-center justify-between">
@@ -366,6 +302,87 @@ files: files.map(f => ({ name: f.name, size: f.size })),
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+
+          {/* Right: Stats + Decisions */}
+          <div className="space-y-6">
+            <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-5">
+              <h3 className="text-lg font-semibold text-slate-900 mb-4">My Project Registry</h3>
+              <div className="grid grid-cols-3 gap-3">
+                <div className="rounded-lg bg-blue-50 text-blue-900 p-3 text-center">
+                  <div className="text-2xl font-bold">{pending.length}</div>
+                  <div className="text-xs">Pending</div>
+                </div>
+                <div className="rounded-lg bg-emerald-50 text-emerald-900 p-3 text-center">
+                  <div className="text-2xl font-bold">{approvals.length}</div>
+                  <div className="text-xs">Approved</div>
+                </div>
+                <div className="rounded-lg bg-amber-50 text-amber-900 p-3 text-center">
+                  <div className="text-2xl font-bold">{feedback.length}</div>
+                  <div className="text-xs">Needs Data</div>
+                </div>
+              </div>
+            </div>
+
+
+            {/* Map */}
+            <div className="rounded-xl overflow-hidden border border-slate-200 h-72">
+              <MapContainer center={indiaCenter} zoom={5} style={{ height: '100%', width: '100%' }}>
+                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap" />
+                <ClickToAddMarker onMapClick={(lat, lng) => {
+                  if (drawArea) {
+                    const next = [...areaPoints, [lat, lng]]
+                    setAreaPoints(next)
+                    // when toggled off (Finish Drawing) we persist GeoJSON below
+                  } else {
+                    setPosition([lat, lng])
+                    setForm({ ...form, latitude: String(lat), longitude: String(lng) })
+                  }
+                }} />
+                {position && <Marker position={position} icon={markerIcon} />}
+                {areaPoints.length >= 3 && (
+                  <Polygon positions={areaPoints} pathOptions={{ color: '#2563eb', fillOpacity: 0.15 }} />
+                )}
+              </MapContainer>
+            </div>
+
+            {/* Project Location Draw Area */}
+            <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-5">
+              <h3 className="text-lg font-medium text-slate-900 mb-2">Project Location</h3>
+              <div className="flex items-center gap-2 mb-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDrawArea((v) => {
+                      const nv = !v
+                      if (!nv && areaPoints.length >= 3) {
+                        setAreaGeoJson(areaPoints)
+                      }
+                      return nv
+                    })
+                  }}
+                  className={`rounded-full px-3 py-1 text-sm border ${drawArea ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-slate-800 border-slate-300 hover:bg-slate-50'}`}
+                >
+                  {drawArea ? 'Finish Drawing' : 'Draw Area'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setAreaPoints([]); setAreaGeoJson(null) }}
+                  className="rounded-full px-3 py-1 text-sm border bg-white text-slate-800 border-slate-300 hover:bg-slate-50"
+                >
+                  Clear Area
+                </button>
+                <span className="text-xs text-slate-500">Tip: While drawing, click on map to add vertices. Finish Drawing to save.</span>
+              </div>
+              {drawArea === false && areaPoints.length >= 3 && (
+                <div className="mt-2 text-xs text-slate-600">
+                  Selected area with {areaPoints.length} points.
+                </div>
+              )}
+              {drawArea === true && areaPoints.length > 0 && (
+                <div className="mt-2 text-xs text-slate-600">Points: {areaPoints.length} (click Finish Drawing to save)</div>
+              )}
             </div>
           </div>
         </div>

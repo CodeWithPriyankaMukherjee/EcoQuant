@@ -25,8 +25,8 @@ git --version
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/theskepticgeek/BlueVault-Prototype.git
-cd BlueVault-Prototype
+git clone https://github.com/theskepticgeek/EcoQuant.git
+cd EcoQuant
 ```
 ### 2. Install Dependencies
 ```bash

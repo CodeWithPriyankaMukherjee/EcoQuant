@@ -19,7 +19,7 @@ export default function AdminDashboard() {
   const { pending, approvals, feedback, approve, requestMore } = useSubmissionStore()
   const [selected, setSelected] = useState(null)
   const [tokenAmount, setTokenAmount] = useState('250')
-  const [network, setNetwork] = useState('sepolia')
+  const [network, setNetwork] = useState('celo')
   const [isProcessing, setIsProcessing] = useState(false)
   const [transactionHash, setTransactionHash] = useState(null)
   const { logout } = usePrivy()
