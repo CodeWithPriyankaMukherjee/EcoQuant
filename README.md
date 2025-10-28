@@ -2,9 +2,9 @@ EQT Deployed to Celo Sepolia contract address (ERC 20 Token) 0xe00b540dfb16dbe12
 
 https://celo-sepolia.blockscout.com/token/0xe00b540dfb16dbe12b80ef89f3172ffe3305ac7b
 
-# Blue Vault Prototype
 
-A decentralized application for secure document storage and carbon tokens minting on Polygon blockchain.
+# 🌱 EcoQuant – A Blockchain-Powered Carbon Finance Ecosystem
+## Revolutionizing Carbon Credits through Transparent Tokenization & AI-Driven Verification
 
 ![Blockchain](https://img.shields.io/badge/Blockchain-Polygon-blue)
 ![IPFS](https://img.shields.io/badge/IPFS-Storage-orange)
