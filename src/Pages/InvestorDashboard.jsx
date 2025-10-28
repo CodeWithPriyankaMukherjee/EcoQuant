@@ -242,7 +242,7 @@ const InvestorDashboard = () => {
         muted
         loop
         className="absolute inset-0 w-full h-full object-cover z-0"
-        src="/video.mp4" type="video/mp4"
+        src="/video.mp4"
       />
       {/* Overlay for better readability */}
       <div className="absolute inset-0 bg-black/50 z-10"></div>
