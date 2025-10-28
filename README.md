@@ -2,6 +2,7 @@ EQT Deployed to Celo Sepolia contract address (ERC 20 Token) 0xe00b540dfb16dbe12
 
 https://celo-sepolia.blockscout.com/token/0xe00b540dfb16dbe12b80ef89f3172ffe3305ac7b
 
+EcoQuant deployed at https://eco-quant.vercel.app/
 
 # 🌱 EcoQuant – A Blockchain-Powered Carbon Finance Ecosystem
 ## Revolutionizing Carbon Credits through Transparent Tokenization & AI-Driven Verification
