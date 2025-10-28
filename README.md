@@ -6,7 +6,7 @@ https://celo-sepolia.blockscout.com/token/0xe00b540dfb16dbe12b80ef89f3172ffe3305
 # 🌱 EcoQuant – A Blockchain-Powered Carbon Finance Ecosystem
 ## Revolutionizing Carbon Credits through Transparent Tokenization & AI-Driven Verification
 
-![Blockchain](https://img.shields.io/badge/Blockchain-Polygon-blue)
+![Blockchain](https://img.shields.io/badge/Blockchain-CELO-yellow)
 ![IPFS](https://img.shields.io/badge/IPFS-Storage-orange)
 
 ## Quick Start
