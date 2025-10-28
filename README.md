@@ -19,11 +19,11 @@ https://celo-sepolia.blockscout.com/token/0xe00b540dfb16dbe12b80ef89f3172ffe3305
 
 EcoQuant tackles this challenge by:
 
-Tokenizing verified carbon projects directly on-chain.
+- Tokenizing verified carbon projects directly on-chain.
 
-Ensuring full transparency of transactions and project authenticity.
+- Ensuring full transparency of transactions and project authenticity.
 
-Creating incentives for green investment through a decentralized liquidity ecosystem.
+- Creating incentives for green investment through a decentralized liquidity ecosystem.
 
 By turning carbon offsets into verifiable, tradable tokens, we’re transforming climate accountability into a tangible financial incentive, empowering individuals and organizations to take part in the global mission toward Net Zero.
 
