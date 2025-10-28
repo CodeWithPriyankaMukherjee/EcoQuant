@@ -36,7 +36,7 @@ By turning carbon offsets into verifiable, tradable tokens, we’re transforming
 
 - The system uses ML-based prediction to suggest the amount of EQT tokens to be minted for each project.
 
-2. Admin Verification & Minting
+#### 2. Admin Verification & Minting
 
 - Admin reviews submissions and approves verified projects.
 
@@ -44,19 +44,19 @@ By turning carbon offsets into verifiable, tradable tokens, we’re transforming
 
 - Each project’s metadata and proof are stored on IPFS for immutable verification.
 
-3. Blockchain Integration
+#### 3. Blockchain Integration
 
 - Minted EQTs are recorded on the Celo Sepolia chain.
 
 - All transactions are publicly viewable for full transparency.
 
-4. Investor Dashboard
+#### 4. Investor Dashboard
 
 - Investors can invest in specific projects, or Trade EQT tokens via the liquidity pool.
 
 - Using the Ubeswap V3 protocol, investors can swap Celo tokens for EQT and add liquidity to the pool — supporting the ecosystem and earning returns.
 
-5. Transparency Layer
+#### 5. Transparency Layer
 
 - Every transaction, investment, and token activity is visible on the investor dashboard.
 
