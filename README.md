@@ -62,6 +62,20 @@ By turning carbon offsets into verifiable, tradable tokens, we’re transforming
 - Every transaction, investment, and token activity is visible on the investor dashboard.
 
 - Ensures trust, traceability, and climate accountability.
+
+## 🔮 Future Roadmap
+#### - ML-based token prediction
+
+#### - Automated admin approvals using smart contract logic
+
+#### - Deep Learning (DL) model integration for dynamic project validation
+
+#### - Multi-user authentication and role-based access
+
+#### - Integration with real-world carbon credit registries
+
+#### - Expansion to mainnet and cross-chain interoperability
+
 ## Quick Start
 
 ### Prerequisites
@@ -124,8 +138,6 @@ VITE_PINATA_SECRET_API_KEY=
 VITE_PINATA_JWT=
 
 # Blockchain Configuration
-PRIVATE_KEY=
-ALCHEMY_API_KEY=
 CELO_PRIVATE_KEY=
 
 # Test Configuration
