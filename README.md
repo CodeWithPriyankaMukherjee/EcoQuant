@@ -73,7 +73,7 @@ By turning carbon offsets into verifiable, tradable tokens, we’re transforming
 
 #### - Expansion to mainnet and cross-chain interoperability
 
-## Quick Start
+## Quick Start (to run locally)
 
 ### Prerequisites
 
